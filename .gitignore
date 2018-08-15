@@ -1,12 +1,15 @@
-*.log*
-.cache
 .DS_Store
+node_modules/
+/dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+/test/unit/coverage/
+
+# Editor directories and files
 .idea
 .vscode
-es
-lib
-node_modules
-docs/dist
-test/coverage
-packages/vant-css/build
-packages/icon/svg
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
