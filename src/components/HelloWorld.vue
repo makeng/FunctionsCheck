@@ -1,37 +1,43 @@
 <template>
   <div class="hello">
-    {{msg}}
+    <van-collapse v-model="activeNames">
+      <van-collapse-item
+        v-for="(item, index) in list"
+        v-model="activeNames"
+        :name="index"
+        :title="item.type"
+      >
+        <van-list>
+          <van-cell v-for="subItem in item.options" :key="subItem" :title="subItem"/>
+        </van-list>
+      </van-collapse-item>
+    </van-collapse>
   </div>
 </template>
 
 <script>
   export default {
-    name: 'HelloWorld',
     data() {
       return {
-        msg: 'Welcome to Your Vue.js App'
+        activeNames: [0],
+        list: [ // 功能列表
+          {
+            type: "字符处理",
+            options: ["cron"]
+          }
+        ],
       }
+    },
+    /* ----------------------------------------- 生命周期 ----------------------------------------- */
+    created() {
+      console.log(123);
+    },
+    methods: {
+      /* ----------------------------------------- 自定义函数 ----------------------------------------- */
     }
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  h1, h2 {
-    font-weight: normal;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-
-  a {
-    color: #42b983;
-  }
 </style>
