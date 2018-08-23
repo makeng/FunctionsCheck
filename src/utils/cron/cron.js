@@ -6,6 +6,33 @@
 
 import dayjs from "dayjs";
 
+const engList = [
+  { day: 0, text: "SUN" },
+  { day: 1, text: "MON" },
+  { day: 2, text: "TUE" },
+  { day: 3, text: "WED" },
+  { day: 4, text: "THU" },
+  { day: 5, text: "FRI" },
+  { day: 6, text: "SAT" },
+  { day: 7, text: "SUN" },
+];
+
+/**
+ *  * 星期数组转换成英文字符串
+ * @param weekArr 星期数组，1-7表示星期一-日，可以是数字或者字符串
+ * @return {string}
+ */
+export function weekArrToEngStr(weekArr) {
+  let str = "";
+  //
+  weekArr.forEach(item => {
+    const eng = engList.find(engItem => engItem.day === parseInt(item));
+    str += (eng.text + ",");
+  });
+  str = str.slice(0, str.length - 1);
+  return str;
+}
+
 /**
  * 输出cron字符串
  * @param time 时分字符串
@@ -39,10 +66,7 @@ export function cron(time, dayOfWeekArr) {
     }
     // 有内容
     else if (dayOfWeekArr.length) {
-      dayOfWeekArr.forEach((item, index) => {
-        dayOfWeek += ( item + ",");
-      });
-      dayOfWeek = dayOfWeek.slice(0, dayOfWeek.length - 1); // 最后一个逗号
+      dayOfWeek = weekArrToEngStr(dayOfWeekArr);
       dayOfMonth = "?";
     }
     //空，表示只执行一次，要判断当前时间，是不是早于设定时间
