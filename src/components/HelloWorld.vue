@@ -2,13 +2,13 @@
   <div class="hello">
     <van-collapse v-model="activeNames">
       <van-collapse-item
-        v-for="(item, index) in list"
-        v-model="activeNames"
-        :name="index"
-        :title="item.type"
+          v-for="(item, index) in list"
+          v-model="activeNames"
+          :name="index"
+          :title="item.type"
       >
         <van-list>
-          <van-cell v-for="subItem in item.options" :key="subItem" :title="subItem"/>
+          <van-cell v-for="subItem in item.options" :key="subItem" :title="subItem" />
         </van-list>
       </van-collapse-item>
     </van-collapse>
@@ -16,6 +16,8 @@
 </template>
 
 <script>
+  import { test } from "../utils/cron/test";
+
   export default {
     data() {
       return {
@@ -30,7 +32,7 @@
     },
     /* ----------------------------------------- 生命周期 ----------------------------------------- */
     created() {
-      console.log(123);
+      test();
     },
     methods: {
       /* ----------------------------------------- 自定义函数 ----------------------------------------- */
